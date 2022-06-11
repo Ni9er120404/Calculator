@@ -11,17 +11,17 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text += " ";
+            richTextBox1.AppendText(text: " ");
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = "";
+            richTextBox1.Clear();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text += "0";
+            richTextBox1.AppendText(text: "0");
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.Text += "-";
+                richTextBox1.AppendText(text: "-");
             }
         }
 
@@ -44,7 +44,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("1");
+                richTextBox1.AppendText(text: "1");
             }
         }
 
@@ -56,7 +56,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("2");
+                richTextBox1.AppendText(text: "2");
             }
         }
 
@@ -68,7 +68,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("3");
+                richTextBox1.AppendText(text: "3");
             }
         }
 
@@ -80,7 +80,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("4");
+                richTextBox1.AppendText(text: "4");
             }
         }
 
@@ -92,7 +92,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("5");
+                richTextBox1.AppendText(text: "5");
             }
         }
 
@@ -104,7 +104,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("6");
+                richTextBox1.AppendText(text: "6");
             }
         }
 
@@ -116,7 +116,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("7");
+                richTextBox1.AppendText(text: "7");
             }
         }
         private void Button12_Click(object sender, EventArgs e)
@@ -127,7 +127,7 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("8");
+                richTextBox1.AppendText(text: "8");
             }
         }
 
@@ -139,96 +139,17 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
             }
             else
             {
-                richTextBox1.AppendText("9");
+                richTextBox1.AppendText(text: "9");
             }
         }
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text == "")
-            {
-                MessageBox.Show("Ошибка");
-            }
-            else
-            {
-                Calculator calculator = new Calculator(richTextBox1.Text);
-                textBox1.Text = calculator.vs[0].ToString();
-                textBox2.Text = calculator.vs[1].ToString();
-                textBox3.Text = calculator.vs[2].ToString();
-                textBox4.Text = calculator.vs[3].ToString();
-                textBox5.Text = calculator.vs[4].ToString();
-                textBox6.Text = calculator.vs[5].ToString();
-                textBox7.Text = calculator.vs[6].ToString();
-                textBox8.Text = calculator.vs[7].ToString();
-                textBox9.Text = calculator.vs[8].ToString();
-                textBox10.Text = calculator.vs[9].ToString();
-                textBox11.Text = calculator.vs[10].ToString();
-                textBox12.Text = calculator.vs[11].ToString();
-                richTextBox2.Text = $"x = {calculator.x}\t y = {calculator.y}\t z = {calculator.z}";
-            }
+            Calculator calculator = new Calculator(str_1: richTextBox1.Text);
+            calculator.Result();
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox12_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -241,47 +162,93 @@ namespace BIVT_21_15_Liamin_Borodin.D.A_DZ_1
 
     internal class Calculator
     {
-        public float[] vs = new float[12];
-        public float x;
-        public float y;
-        public float z;
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+        public float[] Vs { get; set; } = new float[12];
+
         public Calculator(string str_1)
         {
-            string[] strArr = str_1.Split(' ');
-            for (int i = 0; i < strArr.Length; i++)
+            try
             {
-                vs[i] = int.Parse(strArr[i]);
+                for (int i = 0; i < str_1.Split(' ').Length; i++)
+                {
+                    Vs[i] = int.Parse(((string[])str_1.Split(' '))[i]);
+                }
             }
-            float a1 = vs[0];
-            float b1 = vs[1];
-            float c1 = vs[2];
-            float d1 = vs[3];
-            float a2 = vs[4];
-            float b2 = vs[5];
-            float c2 = vs[6];
-            float d2 = vs[7];
-            float a3 = vs[8];
-            float b3 = vs[9];
-            float c3 = vs[10];
-            float d3 = vs[11];
-            x = (float)((d1 * b2 * c3) + (b1 * c2 * d3) + (c1 * d2 * b3) - (c1 * b2 * d3) - (b1 * d2 * c3) - (d1 * c2 * b3)) / (float)((a1 * b2 * c3) + (b1 * c2 * a3) + (c1 * a2 * b3) - (c1 * b2 * a3) - (b1 * a2 * c3) - (a1 * c2 * b3));
-            y = (float)((a1 * d2 * c3) + (c1 * a2 * d3) + (d1 * c2 * a3) - (c1 * d2 * a3) - (d1 * a2 * c3) - (a1 * c2 * d3)) / (float)((a1 * b2 * c3) + (b1 * c2 * a3) + (c1 * a2 * b3) - (c1 * b2 * a3) - (b1 * a2 * c3) - (a1 * c2 * b3));
-            z = (float)((a1 * b2 * d3) + (b1 * d2 * a3) + (d1 * a2 * b3) - (d1 * b2 * a3) - (b1 * a2 * d3) - (a1 * d2 * b3)) / (float)((a1 * b2 * c3) + (b1 * c2 * a3) + (c1 * a2 * b3) - (c1 * b2 * a3) - (b1 * a2 * c3) - (a1 * c2 * b3));
-            if (x == -0)
+            catch (Exception) { }
+            float a1 = Vs[0];
+            float b1 = Vs[1];
+            float c1 = Vs[2];
+            float d1 = Vs[3];
+            float a2 = Vs[4];
+            float b2 = Vs[5];
+            float c2 = Vs[6];
+            float d2 = Vs[7];
+            float a3 = Vs[8];
+            float b3 = Vs[9];
+            float c3 = Vs[10];
+            float d3 = Vs[11];
+            X = (float)((d1 * b2 * c3)
+                        + (b1 * c2 * d3)
+                        + (c1 * d2 * b3)
+                        - (c1 * b2 * d3)
+                        - (b1 * d2 * c3)
+                        - (d1 * c2 * b3)) /
+                (float)((a1 * b2 * c3)
+                        + (b1 * c2 * a3)
+                        + (c1 * a2 * b3)
+                        - (c1 * b2 * a3)
+                        - (b1 * a2 * c3)
+                        - (a1 * c2 * b3));
+            Y = (float)((a1 * d2 * c3)
+                        + (c1 * a2 * d3)
+                        + (d1 * c2 * a3)
+                        - (c1 * d2 * a3)
+                        - (d1 * a2 * c3)
+                        - (a1 * c2 * d3)) / 
+                (float)((a1 * b2 * c3)
+                        + (b1 * c2 * a3)
+                        + (c1 * a2 * b3)
+                        - (c1 * b2 * a3)
+                        - (b1 * a2 * c3)
+                        - (a1 * c2 * b3));
+            Z = (float)((a1 * b2 * d3)
+                        + (b1 * d2 * a3)
+                        + (d1 * a2 * b3)
+                        - (d1 * b2 * a3)
+                        - (b1 * a2 * d3)
+                        - (a1 * d2 * b3)) / 
+                (float)((a1 * b2 * c3)
+                        + (b1 * c2 * a3)
+                        + (c1 * a2 * b3)
+                        - (c1 * b2 * a3)
+                        - (b1 * a2 * c3)
+                        - (a1 * c2 * b3));
+            if (X == -0)
             {
-                x = 0;
+                X = 0;
             }
-            if (y == -0)
+            if (Y == -0)
             {
-                y = 0;
+                Y = 0;
             }
-            if (z == -0)
+            if (Z == -0)
             {
-                z = 0;
+                Z = 0;
             }
-            x.ToString();
-            y.ToString();
-            z.ToString();
+            X.ToString();
+            Y.ToString();
+            Z.ToString();
+        }
+        public void Result()
+        {
+            string result = $"Сиситема уравненеий:\n\n"
+                            + $"{Vs[0]}*x1 + {Vs[1]}*y1 + {Vs[2]} * z1 = {Vs[3]}\n"
+                            + $"{Vs[4]}*x2 + {Vs[5]}*y2 + {Vs[6]} * z2 = {Vs[7]}\n"
+                            + $"{Vs[8]}*x3 + {Vs[9]}*y3 + {Vs[10]} * z3 = {Vs[11]}\n\n"
+                            + $"Ответ: X = {X}, Y = {Y}, Z = {Z}";
+            MessageBox.Show(text: result);
         }
     }
 }
